@@ -9,6 +9,24 @@ android {
     kotlinOptions { jvmTarget = "17" }
     packaging { jniLibs { useLegacyPackaging = true } }
 }
+// Keep dependency resolution compatible with Android Gradle Plugin 8.7.3 and compileSdk 35.
+configurations.configureEach {
+    resolutionStrategy.force(
+        "androidx.core:core:1.13.1",
+        "androidx.core:core-ktx:1.13.1",
+        "androidx.media3:media3-common:1.3.1",
+        "androidx.media3:media3-datasource:1.3.1",
+        "androidx.media3:media3-decoder:1.3.1",
+        "androidx.media3:media3-extractor:1.3.1",
+        "androidx.media3:media3-container:1.3.1",
+        "androidx.media3:media3-database:1.3.1",
+        "androidx.media3:media3-exoplayer:1.3.1",
+        "androidx.media3:media3-exoplayer-dash:1.3.1",
+        "androidx.media3:media3-exoplayer-hls:1.3.1",
+        "androidx.media3:media3-ui:1.3.1"
+    )
+}
+
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -18,6 +36,6 @@ dependencies {
     implementation("androidx.media3:media3-ui:1.3.1")
     implementation("io.coil-kt:coil:2.6.0")
     implementation("androidx.palette:palette:1.0.0")
-    "arm32Implementation"("org.mozilla.geckoview:geckoview-armeabi-v7a:156.0.20260921121718")
-    "arm64Implementation"("org.mozilla.geckoview:geckoview-arm64-v8a:156.0.20260921121718")
+    "arm32Implementation"("org.mozilla.geckoview:geckoview-armeabi-v7a:135.0.20250216192613")
+    "arm64Implementation"("org.mozilla.geckoview:geckoview-arm64-v8a:135.0.20250216192613")
 }
